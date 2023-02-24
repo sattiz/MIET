@@ -21,7 +21,9 @@ public:
         b = tmp;
     }
 
-    Food() = default;
+    Food(){
+        objNum++;
+    }
 
     Food(const Food &item) {
         fam = item.fam;
@@ -29,8 +31,10 @@ public:
         price = item.price;
         weight = item.weight;
         quant = item.quant;
+        objNum++;
     }
 
+    static int getObjNum() {return objNum; }
     void getFam(std::string &dest) const { dest = this->fam; }
     typeOfProduct getType() const { return this->type; }
     double getWeight() const { return this->weight; }
@@ -42,7 +46,9 @@ public:
     void setPrice(double fieldVal){ this->price = fieldVal; }
     void setWeight(double fieldVal){ this->weight = fieldVal; }
 
-    ~Food() = default;
+    ~Food() {
+        objNum--;
+    }
 
 private:
     std::string fam;

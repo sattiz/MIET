@@ -26,10 +26,12 @@ int main() {
                 "Exit program.....................7\n"
                 "\nEnter option: ";
 
+
         int option = Interactor::getOption();
         switch (option) {
             case 1: {
                 BaseInterface::print(*cakes);
+                cout <<"ObjNum == " << Food::getObjNum() << endl;
                 break;
             }
             case 2: {
