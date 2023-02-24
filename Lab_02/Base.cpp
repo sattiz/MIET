@@ -166,7 +166,9 @@ error Base::saveTofFile() {
     }
 
     for (int i = 0; i < this->length; i++) {
-        fp << *this->itemsArr[i].parseToString() << "\n";
+        std::string* s = this->itemsArr[i].parseToString();
+        fp << *s << "\n";
+        delete s;
     }
     this->saveState = true;
     return NO_ERROR;
