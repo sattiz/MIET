@@ -4,15 +4,20 @@
 
 class Base {
 public:
+
     Base() = default;
     explicit Base(const std::string& file);
+
     ~Base();
 
     error addItem(const Food &item);
+
     error removeItem(const std::string &name);
+
     void sort(sortingDirection sortDirection, itemField sortingField);
+
     error saveTofFile();
-    int getItem(const std::string &name);
+
     bool isSaved() const{
         return this->saveState;
     }
@@ -24,4 +29,6 @@ private:
     std::string filename;
     Food* itemsArr{};
     unsigned int length{};
+
+    int getItem(const std::string &name);
 };
