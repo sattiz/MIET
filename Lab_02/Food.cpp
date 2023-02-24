@@ -105,6 +105,7 @@ int Food::moreThen(itemField f, Food& item) {
             else
                 return (this->price - item.price > 0) ? 1 : -1;
     }
+    return 0;
 }
 
 
