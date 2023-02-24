@@ -1,6 +1,5 @@
 #include "Base.h"
 
-
 class BaseInterface {
 public:
 

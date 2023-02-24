@@ -26,8 +26,9 @@ void BaseInterface::printTablesTop() {
 
 void BaseInterface::printTablesBot(double totalPrice, unsigned int totalPos) {
     std::cout << std::setfill('-') << std::setw(134) << "-" << std::endl;
-    std::cout << std::setfill('.') << std::setw(110) << "Total PRICE of all products:" << totalPrice << std::endl;
-    std::cout << std::setfill('.') << std::setw(110) << "Total positions:" << totalPos << std::endl;
+    std::cout << std::setfill('.') << std::setw(110) << "Total PRICE of all products: " << totalPrice << std::endl;
+    std::cout << std::setfill('.') << std::setw(110) << "Total positions: " << totalPos << std::endl;
+    std::cout << std::setfill('.') << std::setw(110) << "Object number: " << Food::getObjNum() << std::endl;
 }
 
 void BaseInterface::printItem(Food &item) {

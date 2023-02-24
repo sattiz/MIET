@@ -31,7 +31,6 @@ int main() {
         switch (option) {
             case 1: {
                 BaseInterface::print(*cakes);
-                cout <<"ObjNum == " << Food::getObjNum() << endl;
                 break;
             }
             case 2: {
