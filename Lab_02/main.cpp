@@ -5,12 +5,11 @@
 using namespace std;
 
 int main() {
-    int option = 1;
     Base *cakes;
     try {
         cakes = new Base(FILEPATH);
     }
-    catch (const std::runtime_error e) {
+    catch (const std::runtime_error& e) {
         cerr << e.what() << endl << "Exiting program!" << endl;
         return 0;
     }
@@ -27,7 +26,7 @@ int main() {
                 "Exit program.....................7\n"
                 "\nEnter option: ";
 
-        option = Interactor::getOption();
+        int option = Interactor::getOption();
         switch (option) {
             case 1: {
                 BaseInterface::print(*cakes);
