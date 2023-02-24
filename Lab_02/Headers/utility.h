@@ -1,8 +1,7 @@
 #pragma once
 #include <fstream>
 #include <iostream>
-#include <fstream>
-#include <cstring>
+#include <string>
 #include <iomanip>
 #include <cmath>
 #include <boost/algorithm/string.hpp>
