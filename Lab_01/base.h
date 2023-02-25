@@ -1,12 +1,12 @@
 #ifndef LAB_01_BASE_H
 #define LAB_01_BASE_H
 
-#include <fstream>
-#include <iostream>
-#include <cstring>
-#include <iomanip>
-#include <cmath>
-#include <boost/algorithm/string.hpp>
+#include <fstream> // работа с файлами
+#include <iostream> // работа с потоками ввода-вывода
+#include <iomanip>  // и его модификация
+#include <string>                     // работа со строками
+#include <boost/algorithm/string.hpp> // работа со строками
+#include <cmath> // сравнение вещественных чисел
 
 #define FILEPATH "cakes.txt"
 
