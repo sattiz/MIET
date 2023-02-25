@@ -245,5 +245,7 @@ Changes saved!
 - [main.cpp](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/edit/main/Lab_01/main.cpp)  
 - [utility.h](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/edit/main/Lab_01/utility.h)  
 - [base.cpp](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/edit/main/Lab_01/base.cpp)  
-- [base.h](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/edit/main/Lab_01/base.h)
+- [base.h](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/edit/main/Lab_01/base.h)  
+
+
 [<назад>](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET)
