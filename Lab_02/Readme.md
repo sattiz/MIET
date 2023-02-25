@@ -271,13 +271,14 @@ private:
 };
 
 ```
-#### Реализация методов
+#### Листинг исходного кода
 
 | BaseInterface | Base | Interactor | Food |
 |:---:|:---:|:---:|:---:|
 | [BaseInterface.cpp](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/BaseInterface.cpp) | [Base.cpp](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/Base.cpp) | [Interactor.cpp](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/Interactor.cpp) | [Food.cpp](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/Food.cpp) |
 | [BaseInterface.h](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/BaseInterface.h) | [Base.h](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/Base.h) | [Interactor.h](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/Interactor.h) | [Food.h](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/Food.h) |
 
+[main.cpp](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/main.cpp)
 #### Схематическое описание взаимодействия элементов программы и пользователя
 
 ![image](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/blob/main/Lab_02/Project.drawio.svg)
