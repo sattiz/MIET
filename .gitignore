@@ -1,3 +1,4 @@
+############################ C++
 # Prerequisites
 *.d
 
@@ -35,4 +36,6 @@
 test/
 cmake-build-debug/
 CMakeLists.txt
-Lab_02/.$Project.drawio.svg.bkp
+
+############################ jupiter notebook
+.ipynb_checkpoints/
