@@ -1,4 +1,4 @@
-[<назад>](https://github.com/xXxINFARKTxXx/MIET/tree/main/2Sem/OOP2023SpringMIET)
+[<назад>](https://github.com/xXxINFARKTxXx/MIET/tree/main/2Sem/OOP_Spring_2023_MIET)
 # Лабораторная работа №1 (Вариант 1)
 ## Цель работы
 Цель работы: Закрепить практические навыки, полученные при изучении дисциплины «Основы программирования».  Решение задач с использованием динамических структур, работа с файлами.
@@ -248,4 +248,4 @@ Changes saved!
 - [base.h](https://github.com/xXxINFARKTxXx/OOP2023SpringMIET/edit/main/Lab_01/base.h)  
 
 
-[<назад>](https://github.com/xXxINFARKTxXx/MIET/tree/main/2Sem/OOP2023SpringMIET)
+[<назад>](https://github.com/xXxINFARKTxXx/MIET/tree/main/2Sem/OOP_Spring_2023_MIET)
