@@ -110,14 +110,14 @@ print(R)
 
 ### Упражнение № 5
 #### Текст упражнения
-1) Ввести матрицы  
+1) Ввести матрицы:  
 
 $$ 
 A = \left( \begin{matrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{matrix} \right) \,\space      
 B = \left( \begin{matrix} 1 & -2 & 1 \\\\ -2 & 3 & 4 \end{matrix} \right) \,\space  
 C = 2 \, \space  
 D = ones \left( 2,3 \right) \, \space  
-E = eye \left( 3,3 \right) \, \space 
+E = eye \left( 3,3 \right)
 $$
 
 2) Выполнить операции (или убедиться, что их выполнить нельзя): $$A + B, \space A + c, \space A - B, \space A - c, \space c* B, \space A* B, \space A* transp(B) $$
@@ -136,8 +136,13 @@ print(A, B, c, D, E, sep = '\n\n')
 ```
  
 2) Операции `print(A+B)`, `print(A+c)`, `print(A-c)`, `print(c*A)`, `print(np.matmul(A,B.transpose()))` успешно выполняются.
-3) Операция `print(A+E)` выводит следующее сообщение `ValueError: operands could not be broadcast together with shapes (2,3) (3,3)`,
-что ожидаемо, т.к матрицы $A_(m * n)$ и $B_(k*l)$ могут быть сложены только в случае если  $m=k$  и  $n=l$.
+
+3) Операция `print(A+E)` выводит следующее сообщение:
+```
+ValueError: operands could not be broadcast together with shapes (2,3) (3,3)
+```
+что ожидаемо, т.к матрицы $A_(m * n)$ и $B_(k*l)$ могут быть сложены только в случае если  $m=k$  и  $n=l$.  
+
 4) Операция `print(np.matmul(A,B))` выводит следующее сообщение 
 ```
 ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 3)
