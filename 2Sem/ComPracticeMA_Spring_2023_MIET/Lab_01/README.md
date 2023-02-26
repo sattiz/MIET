@@ -120,7 +120,7 @@ D = ones \left( 2,3 \right) \, \space
 E = eye \left( 3,3 \right)
 $$
 
-2) Выполнить операции (или убедиться, что их выполнить нельзя): $$A + B, \space A + c, \space A - B, \space A - c, \space c* B, \space A* B, \space A* transp(B) $$
+2) Выполнить операции (или убедиться, что их выполнить нельзя): $$A + B, \space A + c, \space A - B, \space A - c, \space c* B, \space A \times B, \space A \times B^T $$
 #### Комментарии к командам
 
 1) Подключение библиотек, инициализация переменных, вывод на экран:
