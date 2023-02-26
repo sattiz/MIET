@@ -102,8 +102,8 @@ void *getField(fields f) {
         case cmpflag: {
             int *t = new int;
             std::cout << "Enter filter type:\n"
-                         "0 - more than chosen price\n"
-                         "1 - less than chosen price\n"
+                         "0 - less than chosen price\n"
+                         "1 - more than chosen price\n"
                          "2 - equal to chosen price\n"
                          "and press Enter: ";
             if (!(std::cin >> *t) || (*t > 2 || *t < 0)) {
