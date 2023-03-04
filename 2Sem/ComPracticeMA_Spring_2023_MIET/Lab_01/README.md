@@ -1,3 +1,5 @@
+[<назад>](https://github.com/xXxINFARKTxXx/MIET/edit/main/2Sem/ComPracticeMA_Spring_2023_MIET)
+
 # Практикум 1. Пошаговые вычисления в пакете ANACONDA.
 
 ## Цель работы 
@@ -110,17 +112,17 @@ print(R)
 
 ### Упражнение № 5
 #### Текст упражнения
-1) Ввести матрицы  
+1) Ввести матрицы:  
 
 $$ 
-A = \left( \begin{matrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{matrix} \right) \,\space      
-B = \left( \begin{matrix} 1 & -2 & 1 \\\\ -2 & 3 & 4 \end{matrix} \right) \,\space  
-C = 2 \, \space  
+A = \begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \end{pmatrix} \,\space      
+B = \begin{pmatrix} 1 & -2 & 1 \\\\ -2 & 3 & 4 \end{pmatrix} \,\space  
+c = 2 \, \space  
 D = ones \left( 2,3 \right) \, \space  
-E = eye \left( 3,3 \right) \, \space 
+E = eye \left( 3,3 \right)
 $$
 
-2) Выполнить операции (или убедиться, что их выполнить нельзя): $$A + B, \space A + c, \space A - B, \space A - c, \space c* B, \space A* B, \space A* transp(B) $$
+2) Выполнить операции (или убедиться, что их выполнить нельзя): $$A + B, \space A + c, \space A - B, \space A - c, \space c* B, \space A \times B, \space A \times B^T $$
 #### Комментарии к командам
 
 1) Подключение библиотек, инициализация переменных, вывод на экран:
@@ -136,13 +138,18 @@ print(A, B, c, D, E, sep = '\n\n')
 ```
  
 2) Операции `print(A+B)`, `print(A+c)`, `print(A-c)`, `print(c*A)`, `print(np.matmul(A,B.transpose()))` успешно выполняются.
-3) Операция `print(A+E)` выводит следующее сообщение `ValueError: operands could not be broadcast together with shapes (2,3) (3,3)`,
-что ожидаемо, т.к матрицы $A_(m * n)$ и $B_(k*l)$ могут быть сложены только в случае если  $m=k$  и  $n=l$.
+
+3) Операция `print(A+E)` выводит следующее сообщение:
+```
+ValueError: operands could not be broadcast together with shapes (2,3) (3,3)
+```
+что ожидаемо, т.к матрицы $A_(m \times n)$ и $B_(k \times l)$ могут быть покомпонентно сложены только в случае если  $m=k$  и  $n=l$.  
+
 4) Операция `print(np.matmul(A,B))` выводит следующее сообщение 
 ```
 ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 3)
 ```
-что ожидаемо, т.к матрицы $A_(m * n)$ и $B_(k*l)$ могут быть перемножены только в случае если  $n=k$.
+что ожидаемо, т.к матрицы $A_\(m \times n\)$ и $B_(k \times l)$ могут быть перемножены только в случае если  $n=k$.
 #### Листинг упражнения
 [ex5.ipynb](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/ComPracticeMA_Spring_2023_MIET/Lab_01/src/ex5.ipynb)
 
@@ -182,13 +189,13 @@ import numpy.matlib as ml
 2) Вычислить значение выражения $y=ch^2(x)-sh^2(x)$ одновременно при $x=-2, -1.5, -1, ..., 2$.
 #### Комментарии к командам
 1) Импорт библиотек
-```
+```python
 import numpy as np
 import numpy as pi
 ```
 2) Инициализация вектор-строки : `A = np.arange(0, 2*np.pi+np.pi/7, np.pi/6)`
 3) Вычисление значений вектора-строки:
-```
+```python
 print(np.sin(A), '\n') #sin(x)
 print(np.cos(A), '\n') #cos(x)
 print(np.sin(A)/np.cos(A), '\n') #tg(x)
@@ -198,7 +205,7 @@ print(1/np.cos(A), '\n') #cosec(x)
 ```
 4) Инициализация вектора-строки: `B = np.arange(-2, 2.1, 0.5)`
 5) Объявление функции для вычисления $y=ch^2(x)-sh^2(x)$: 
-```
+```python
 def foo(x):
     return np.cosh(x)*np.cosh(x) - np.sinh(x)*np.sinh(x)
 ```
@@ -226,3 +233,5 @@ C помощью команды `%whos`
 + `-` - покомпонентное вычитание числовых массивов одинаковой размерности,
 + `*` - покомпонентное умножение массивов одинаковой размерности,
 + `/` - покомпонентное деление элементов массивов одинаковой размерности.
+
+[<назад>](https://github.com/xXxINFARKTxXx/MIET/edit/main/2Sem/ComPracticeMA_Spring_2023_MIET)
