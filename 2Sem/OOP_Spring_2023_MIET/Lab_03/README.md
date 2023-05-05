@@ -61,7 +61,285 @@
 
 ## Реализация технического задания
 
+### Сторонние возможности
+При реализации программы были использованы следующие возможности из библиотек:
+```c++
+#include <fstream> // работа с файлами
+#include <iostream> // работа с потоками ввода-вывода
+#include <iomanip>  // и его модификация 
+#include <string>                     // работа со строками
+#include <boost/algorithm/string.hpp> // работа со строками
+#include <cmath> // сравнение вещественных чисел
+```
+### Архитектура приложения
 
+Приложение состоит из следующих сущностей:  
+  - ```class Account{...}``` - элемент базы хранит в себе данные о учетной записи пользователя банка,  
+  - ```class Bank{...}``` - база данных,  
+  - ```class Person{...}``` - элемент класса `Account`, который содержит персональные данные о пользователе,  
+  - ```class Interactor{...}``` - интерфейс для взаимодействия с пользователем,также служит для валидации данных  
+  
+#### Сигнатуры классов
+
+##### Account
+```c++
+class Account {  
+public:  
+//конструкторы
+	Account();  
+	Account(const Account &item);  
+	Account(std::string &source);  
+	template<typename T>  
+	Account(T name, T surname, T fathername,  
+	long long int number, long double deposit) {...}  
+	  
+
+	bool toString(std::string &dest);  
+	static void swap(Account &left, Account &right);  
+
+//операторы
+	friend Account& operator+(Account &item, long double money);  
+	Account& operator=(Account const&right);  
+	Account& operator+=(long double right);  
+	friend std::ostream& operator<<(std::ostream &os, Account &item);  
+	friend bool operator <(const Account&left, const Account &right);
+	friend bool operator >(const Account&left, const Account &right);
+
+// геттеры
+	long long int getNum() const;
+	static int getObjNum();
+	
+	~Account();  
+  
+private:  
+	Person client;  
+	long long int accountNumber;  
+	long double deposit;  
+	static int objNum;  
+};
+```
+##### Bank
+```c++
+class Bank {  
+  
+public:  
+	Bank(std::string &filename);  
+	  
+	~Bank() = default;  
+	  
+	template<typename T>  
+	bool addAccount(T source) {...}  
+	  
+	template<typename T>  
+	bool addAccount(T name, T surname, T fathername, long long int accNum, long double deposite){...}  
+  
+	void print();  
+	void print(long long accNum);  
+	void sort(int key = 0);  
+	void saveChanges();  
+  
+private:  
+	Account* searchByAccountNum(long long int accountNumber);  
+  
+	std::vector<Account> list;  
+	std::string filename;  
+};
+```
+
+##### Person
+```c++
+class Person {  
+public:  
+	Person();  
+	  
+	Person(Person &item);  
+	  
+	Person(std::string name, std::string surname, std::string fatherName);  
+	  
+	bool toString(std::string& dest);  
+	  
+	bool fromString(std::string& source);  
+	  
+	friend std::ostream& operator<<(std::ostream& out, Person &item) {...}  
+	  
+	friend class Account;  
+	  
+private:  
+	std::string name;  
+	std::string surname;  
+	std::string fatherName;  
+};
+```
+
+##### Interactor
+```c++
+class Interactor {  
+public:  
+	  
+	static int getOption();  
+	  
+	static void clearAndWarn();  
+	  
+	static void printMenu();  
+	  
+	static std::string getAccount();  
+	  
+	template<typename T>  
+	[[nodiscard]] static T *getField(int fieldFlag) {...}  
+  
+};
+
+```
+#### Листинг исходного кода
+
+| Account | Bank | Interactor | Person |
+|:---:|:---:|:---:|:---:|
+| [Account.cpp](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/src/Account.cpp) | [Bank.cpp](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/src/Bank.cpp) | [Interactor.cpp](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/src/Interactor.cpp) | [Person.cpp](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/src/Person.cpp) |
+| [Account.h](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/headers/Account.h) | [Bank.h](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/headers/Bank.h) | [Interactor.h](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/headers/Interactor.h) | [Person.h](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/headers/Person.h) |
+
+[main.cpp](https://github.com/xXxINFARKTxXx/MIET/blob/main/2Sem/OOP_Spring_2023_MIET/Lab_03/src/main.cpp)
+
+#### Пример работы программы
+
+##### Начало работы (меню программы)
+```
+--------------------------------------------------------------------------------------------------------------------------------------
+Print Base.......................1
+Add new account..................2
+Sort Base........................3
+Find account by number...........4
+Save changes.....................5
+Print menu.......................6
+Exit program.....................7
+
+Enter option: 
+```
+> На любой невалидный ввод программа регирует следующим образом: ``` Wrong input!```.
+> Кроме того программа прекращает взаимодействовать с пользователем в районе данной опции программы и выводит меню.
+> Например:
+```
+Enter option: 2
+Enter product name (all symbols except ';') and press Enter: Name 
+Enter product type(1 - bun, 2 - pie, 3 - cake) and press Enter: 1 asd qwe
+Wrong input!
+
+...
+\\\ Menu
+...
+```
+
+##### Вывод занесенной базы на экран 
+```
+...
+Enter option(6 to print menu): 1
+
+Name:               Fathername:         Surname:            Account Number:     Deposit:            
+-----------------------------------------------------------------------------------------------------
+vladimir            voyakin             vladimirovich       4443234             56754               
+qwe                 qwe                 asd                 123                 333333              
+clad                arzanovich          ponmev              7                   16000               
+-----------------------------------------------------------------------------------------------------
+Total Accounts(objects):............................................................................3
+Accounts(objects) printed:..........................................................................3
+
+
+Enter option(6 to print menu): 
+```
+
+>В академических целях добавлен вывод на экран количества созданных объектов класса Food: ```Object number: ......11```, который в свою очередь меняется в зависимости от количесвтва объектов в базе. Форматированный вывод меняет количество итогов таблицы, за исключением последнего(количество объектов меняется только функциями (2) и (3) вышеописанного меню) 
+
+##### Добавление пользователя
+```
+Enter option(6 to print menu): 2
+Enter name: name
+Enter surname: surname
+Enter fathername: fathername
+Enter account number: 12345678910
+Enter deposit: 123
+
+Account added!
+
+Enter option(6 to print menu): 1
+
+Name:               Fathername:         Surname:            Account Number:     Deposit:            
+-----------------------------------------------------------------------------------------------------
+vladimir            voyakin             vladimirovich       4443234             56754               
+qwe                 qwe                 asd                 123                 333333              
+clad                arzanovich          ponmev              7                   16000               
+name                fathername          surname             12345678910         123                 
+-----------------------------------------------------------------------------------------------------
+Total Accounts(objects):............................................................................4
+Accounts(objects) printed:..........................................................................4
+
+
+Enter option(6 to print menu): 
+```
+
+#####  Сортировка
+```
+Enter option(6 to print menu): 3
+
+Base sorted!
+
+Enter option(6 to print menu): 1
+
+Name:               Fathername:         Surname:            Account Number:     Deposit:            
+-----------------------------------------------------------------------------------------------------
+name                fathername          surname             12345678910         123                 
+clad                arzanovich          ponmev              7                   16000               
+vladimir            voyakin             vladimirovich       4443234             56754               
+qwe                 qwe                 asd                 123                 333333              
+-----------------------------------------------------------------------------------------------------
+Total Accounts(objects):............................................................................4
+Accounts(objects) printed:..........................................................................4
+
+
+Enter option(6 to print menu): 
+
+```
+
+##### Вывод занесенной базы с фильтром
+```
+Enter option(6 to print menu): 4
+
+Enter account number: 7
+Name:               Fathername:         Surname:            Account Number:     Deposit:            
+-----------------------------------------------------------------------------------------------------
+clad                arzanovich          ponmev              7                   16000               
+-----------------------------------------------------------------------------------------------------
+Total Accounts(objects):............................................................................4
+Accounts(objects) printed:..........................................................................1
+
+
+Enter option(6 to print menu): 
+```
+
+##### Импорт данных из базы в файл
+```
+Enter option(6 to print menu): 5
+
+Changes saved!
+
+Enter option(6 to print menu):
+```
+
+##### Завершение работы
+```
+Enter option(6 to print menu): 7
+Would you like to save changes?
+Press enter to SAVE, enter any other character to CANCEL changes:d
+Saving cancelled.
+Press enter to EXIT, enter any other character to continue work with program:d
+
+Enter option(6 to print menu): 7
+Would you like to save changes?
+Press enter to SAVE, enter any other character to CANCEL changes:
+Changes are successfully saved!
+Press enter to EXIT, enter any other character to continue work with program:
+See ya!
+
+...
+```
 
 ## Ответы на контрольные вопросы
 
