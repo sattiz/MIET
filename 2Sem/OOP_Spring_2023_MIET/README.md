@@ -6,3 +6,7 @@
 
 
 ### [Отчет ЛР №2](https://github.com/xXxINFARKTxXx/MIET/tree/main/2Sem/OOP_Spring_2023_MIET/Lab_02)
+
+
+### [Отчет ЛР №3](https://github.com/xXxINFARKTxXx/MIET/tree/main/2Sem/OOP_Spring_2023_MIET/Lab_03)
+
