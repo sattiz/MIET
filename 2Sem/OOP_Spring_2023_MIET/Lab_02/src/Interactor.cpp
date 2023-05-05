@@ -12,6 +12,7 @@ void Interactor::printInstruction(itemField field) {
     std::cout << explanation[static_cast<int>(field)];
 }
 
+
 bool Interactor::wrongInputWarning() {
     std::cout << "Wrong input!" << std::endl;
     return false;

@@ -2,11 +2,11 @@
 
 int Account::objNum = 0;
 
-Account::Account(Account &item) {
+Account::Account(const Account &item) {
     this->client = item.client;
     this->accountNumber = item.accountNumber;
     this->deposit = item.deposit;
-    Account::objNum++;
+    objNum++;
 }
 
 Account::Account(std::string &source) {
@@ -23,16 +23,17 @@ Account::Account(std::string &source) {
 
     if(sepIndex = source.find(';')) {
         std::string accNumSource = source.substr(0,sepIndex);
-        try {this->accountNumber = std::stoi(accNumSource); }
+        try {this->accountNumber = std::stoll(accNumSource); }
         catch (...) { throw std::runtime_error("Invalid source: cam not get account number"); }
-        accNumSource.erase(0, sepIndex + 1);
+        source.erase(0, sepIndex + 1);
     }
 
     if(sepIndex = source.find(';')) {
         std::string depositSource = source.substr(0,sepIndex);
-        try {this->deposit = std::stod(depositSource); }
+        try {this->deposit = std::stold(depositSource); }
         catch (...) { throw std::runtime_error("Invalid source: cam not get account deposit"); }
     }
+    objNum++;
 }
 
 bool Account::toString(std::string &dest) {
@@ -48,19 +49,39 @@ void Account::swap(Account &left, Account &right) {
     left = tmp;
 }
 
-int Account::compareByDeposit(Account &left, Account *right) {
-    return left.deposit - right->deposit > 0 ? 1 : -1;
+Account& Account::operator=(Account const&right) {
+    this->deposit = right.deposit;
+    this->accountNumber = right.accountNumber;
+    this->client = right.client;
+    return *this;
 }
 
-long double operator+(Account &item, long double money) {
-    return item.deposit += money;
+Account& operator+(Account &item, long double money) {
+    item.deposit += money;
+    return item;
+}
+
+Account& Account::operator+=(long double right){
+    return *this = *this + right;
 }
 
 std::ostream &operator<<(std::ostream &os, Account &item) {
-    return os;
+    std::string str = std::to_string (item.deposit);
+    str.erase ( str.find_last_not_of('0') + 1, std::string::npos );
+    str.erase ( str.find_last_not_of('.') + 1, std::string::npos );
+    return os << std::left << std::setw(20) << item.client
+            << std::left << std::setw(20) << std::to_string(item.accountNumber)
+            << std::left << std::setw(20) << str;
 }
 
 Account::~Account() {
     Account::objNum--;
+}
+
+Account::Account() {
+    this->deposit = 0;
+    this->accountNumber = 0;
+    this->client = Person();
+    objNum++;
 }
 

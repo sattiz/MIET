@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 class Person {
 public:
@@ -16,7 +17,15 @@ public:
 
     bool fromString(std::string& source);
 
+    friend std::ostream& operator<<(std::ostream& out, Person &item) {
+        return out << std::left << std::setw(20) << item.name
+                << std::left << std::setw(20) << item.fatherName
+                << std::left << std::setw(20) << item.surname;
+    }
+
     friend class Account;
+
+
 
 private:
     std::string name;
